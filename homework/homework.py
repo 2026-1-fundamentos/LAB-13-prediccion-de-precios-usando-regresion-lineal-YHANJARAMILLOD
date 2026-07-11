@@ -25,11 +25,11 @@ y_train=train_df['Present_Price']
 x_test=test_df.drop(columns=['Present_Price'])
 y_test=test_df['Present_Price']
 print("Columnas que le llegan al modelo:", x_train.columns.tolist())
-columnas_categoricas = ['Fuel_Type', 'Selling_type', 'Transmission']
+columnas_categoricas = ['Fuel_Type', 'Selling_type', 'Transmission', 'Owner']
 columnas_numericas = [col for col in x_train.columns if col not in columnas_categoricas]
 preprocesador = ColumnTransformer(
     transformers=[
-        ('cat', OneHotEncoder(drop='first',handle_unknown='ignore'), columnas_categoricas),
+        ('cat', OneHotEncoder(handle_unknown='ignore'), columnas_categoricas),
         ('num', MinMaxScaler(), columnas_numericas)
     
     ],
