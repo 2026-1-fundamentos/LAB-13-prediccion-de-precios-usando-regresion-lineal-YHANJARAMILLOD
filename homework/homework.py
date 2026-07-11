@@ -40,7 +40,7 @@ pipeline_modelo = Pipeline(steps=[
         ("regressor", LinearRegression())
 ])
 parametros_a_probar = {
-    "select_k_best__k": [10, 12, 15],
+    "select_k_best__k": [3,4,5,6,7,8,9,10],
 }
 # 2. Configuramos la Validación Cruzada y la Métrica
 optimizador = GridSearchCV(
