@@ -1,12 +1,13 @@
 import pandas as pd
 import os
+import numpy as np
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.feature_selection import SelectKBest, f_regression , mutual_info_regression
 from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import GridSearchCV, KFold
 import pickle
 import gzip
 from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
@@ -44,11 +45,12 @@ parametros_a_probar = {
     "select_k_best__score_func": [f_regression, mutual_info_regression],
     "regressor__fit_intercept": [True, False],
 }
+np.random.seed(42)
 # 2. Configuramos la Validación Cruzada y la Métrica
 optimizador = GridSearchCV(
     estimator=pipeline_modelo,            
     param_grid=parametros_a_probar,       
-    cv=10,                                
+    cv=KFold(n_splits=10, shuffle=True, random_state=42),                                
     scoring='neg_mean_absolute_error',          
     n_jobs=6,
     verbose=3,
