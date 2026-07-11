@@ -41,7 +41,7 @@ pipeline_modelo = Pipeline(steps=[
         ("regressor", LinearRegression())
 ])
 parametros_a_probar = {
-    "select_k_best__k": range(1, 12),
+    "select_k_best__k": range(1, 20),
     "select_k_best__score_func": [f_regression, mutual_info_regression],
     "regressor__fit_intercept": [True, False],
 }
