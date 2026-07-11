@@ -19,11 +19,11 @@ test_df['Age'] = 2021 - test_df['Year'].astype(int)
 test_df = test_df.drop(columns=['Year', 'Car_Name'])
 train_df = train_df.drop(columns=['Year', 'Car_Name'])
 
-x_train=train_df.drop(columns=['Selling_Price'])
-y_train=train_df['Selling_Price']
-x_test=test_df.drop(columns=['Selling_Price'])
-y_test=test_df['Selling_Price']
-
+x_train=train_df.drop(columns=['Present_Price'])
+y_train=train_df['Present_Price']
+x_test=test_df.drop(columns=['Present_Price'])
+y_test=test_df['Present_Price']
+print("Columnas que le llegan al modelo:", x_train.columns.tolist())
 columnas_categoricas = ['Fuel_Type', 'Selling_type', 'Transmission']
 columnas_numericas = [col for col in x_train.columns if col not in columnas_categoricas]
 preprocesador = ColumnTransformer(
