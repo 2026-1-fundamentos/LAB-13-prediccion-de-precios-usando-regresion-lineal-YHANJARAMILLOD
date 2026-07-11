@@ -40,7 +40,7 @@ pipeline_modelo = Pipeline(steps=[
         ("regressor", LinearRegression())
 ])
 parametros_a_probar = {
-    "feature_selection__k": range(1, 12),
+    "select_k_best__k": range(1, 12),
     "regressor__fit_intercept": [True, False],
 }
 # 2. Configuramos la Validación Cruzada y la Métrica
