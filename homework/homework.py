@@ -76,17 +76,17 @@ y_test_pred = mejor_modelo.predict(x_test)
 metrics_train = {
     'type': 'metrics',
     'dataset': 'train',
-    'r2': r2_score(y_train, y_train_pred),
-    'mse': mean_squared_error(y_train, y_train_pred),
-    'mad': round(mean_absolute_error(y_train, y_train_pred), 4)
+    'r2': float(r2_score(y_train, y_train_pred)),
+    'mse': float(mean_squared_error(y_train, y_train_pred)),
+    'mad': float(mean_absolute_error(y_train, y_train_pred))
     
 }
 metrics_test = {
     'type': 'metrics',
     'dataset': 'test',
-    'r2': r2_score(y_test, y_test_pred),
-    'mse': mean_squared_error(y_test, y_test_pred),
-    'mad': round(mean_absolute_error(y_test, y_test_pred), 4)
+    'r2': float(r2_score(y_test, y_test_pred)),
+    'mse': float(mean_squared_error(y_test, y_test_pred)),
+    'mad': float(mean_absolute_error(y_test, y_test_pred))
     
 }
 ruta_archivo = 'files/output/metrics.json'
