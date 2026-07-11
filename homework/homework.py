@@ -28,7 +28,7 @@ columnas_categoricas = ['Fuel_Type', 'Selling_type', 'Transmission']
 columnas_numericas = [col for col in x_train.columns if col not in columnas_categoricas]
 preprocesador = ColumnTransformer(
     transformers=[
-        ('cat', OneHotEncoder(handle_unknown='ignore'), columnas_categoricas),
+        ('cat', OneHotEncoder(drop='first',handle_unknown='ignore'), columnas_categoricas),
         ('num', MinMaxScaler(), columnas_numericas)
     
     ],
