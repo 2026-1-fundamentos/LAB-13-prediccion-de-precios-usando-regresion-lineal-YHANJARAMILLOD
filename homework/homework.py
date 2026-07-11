@@ -4,7 +4,7 @@ from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import MinMaxScaler
-from sklearn.feature_selection import SelectKBest, f_regression
+from sklearn.feature_selection import SelectKBest, f_regression , mutual_info_regression
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import GridSearchCV
 import pickle
@@ -41,6 +41,7 @@ pipeline_modelo = Pipeline(steps=[
 ])
 parametros_a_probar = {
     "select_k_best__k": range(1, 12),
+    "select_k_best__score_func": [f_regression, mutual_info_regression],
     "regressor__fit_intercept": [True, False],
 }
 # 2. Configuramos la Validación Cruzada y la Métrica
